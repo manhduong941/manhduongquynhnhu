@@ -770,6 +770,11 @@ html.no-scroll body {
   font-family: var(--font-body);
   font-style: italic;
   margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+.text-nowrap {
+  white-space: nowrap;
 }
 
 .hero-date-line {
@@ -2313,6 +2318,11 @@ select.form-control {
 
   .thankyou-title {
     font-size: 2.6rem;
+  }
+
+  .thankyou-text {
+    font-size: clamp(0.86rem, 3.8vw, 0.94rem);
+    line-height: 1.75;
   }
 
   .rsvp-card {
