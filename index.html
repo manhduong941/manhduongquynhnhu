@@ -166,6 +166,13 @@
                 <span>Bà Vũ Thị Hồng</span>
               </p>
               <p class="parents-address">Xóm 3, Trung Lao, Xã Cổ Lễ, Tỉnh Ninh Bình</p>
+              <a href="https://maps.app.goo.gl/7sFrr7hu5XZKAVQd8?g_st=ipc" target="_blank" rel="noopener" class="parents-map-btn" title="Chỉ đường tới nhà trai">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                Xem bản đồ
+              </a>
             </div>
 
             <div class="parents-divider" aria-hidden="true"></div>
@@ -177,6 +184,13 @@
                 <span>Bà Phạm Thị Phương</span>
               </p>
               <p class="parents-address">Số 129 đường Hữu Nghị, Xã Cổ Lễ, Tỉnh Ninh Bình</p>
+              <a href="https://maps.app.goo.gl/dgN5ZMTHC8GcDK5C8?g_st=ipc" target="_blank" rel="noopener" class="parents-map-btn" title="Chỉ đường tới nhà gái">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                Xem bản đồ
+              </a>
             </div>
           </div>
 
@@ -452,32 +466,58 @@
             </div>
           </div>
 
-          <div class="map-frame">
-            <iframe
-              src="https://www.google.com/maps?q=S%E1%BB%91%20129%20%C4%91%C6%B0%E1%BB%9Dng%20H%E1%BB%AFu%20Ngh%E1%BB%8B%2C%20X%C3%A3%20C%E1%BB%95%20L%E1%BB%85%2C%20T%E1%BB%89nh%20Ninh%20B%C3%ACnh&output=embed"
-              width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" title="Bản đồ địa điểm tiệc cưới"></iframe>
-          </div>
+          <!-- Map Section with Groom & Bride Switcher -->
+          <div class="map-section-wrap">
+            <div class="map-tabs" role="tablist" aria-label="Chọn bản đồ địa điểm tiệc cưới">
+              <button type="button" class="map-tab active" id="tab-map-groom" role="tab" aria-selected="true" aria-controls="map-frame">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                Tiệc Nhà Trai
+              </button>
+              <button type="button" class="map-tab" id="tab-map-bride" role="tab" aria-selected="false" aria-controls="map-frame">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                Tiệc Nhà Gái
+              </button>
+            </div>
 
-          <div class="ceremony-actions">
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=S%E1%BB%91%20129%20%C4%91%C6%B0%E1%BB%9Dng%20H%E1%BB%AFu%20Ngh%E1%BB%8B%2C%20X%C3%A3%20C%E1%BB%95%20L%E1%BB%85%2C%20T%E1%BB%89nh%20Ninh%20B%C3%ACnh"
-              target="_blank" rel="noopener" class="btn-action btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-              Xem Bản Đồ
-            </a>
+            <div class="map-location-info">
+              <span class="map-location-title" id="map-location-title">Tư Gia Nhà Trai</span>
+              <p class="map-location-address" id="map-location-address">Xóm 3, Trung Lao, Xã Cổ Lễ, Tỉnh Ninh Bình</p>
+            </div>
 
-            <button id="btn-add-calendar" class="btn-action btn-outline" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              Thêm Vào Lịch
-            </button>
+            <div class="map-frame" id="map-frame">
+              <iframe
+                id="map-iframe"
+                src="https://maps.google.com/maps?q=20.3043333,106.2621111&amp;hl=vi&amp;z=16&amp;output=embed"
+                width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Bản đồ địa điểm tiệc cưới"></iframe>
+            </div>
+
+            <div class="ceremony-actions">
+              <a id="btn-view-map" href="https://maps.app.goo.gl/7sFrr7hu5XZKAVQd8?g_st=ipc"
+                target="_blank" rel="noopener" class="btn-action btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                <span id="btn-map-text">Chỉ Đường Nhà Trai</span>
+              </a>
+
+              <button id="btn-add-calendar" class="btn-action btn-outline" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Thêm Vào Lịch
+              </button>
+            </div>
           </div>
         </article>
       </div>
@@ -608,10 +648,10 @@
           <h4 class="bank-title">Chú Rể — Vũ Mạnh Dưỡng</h4>
           <img class="bank-qr-img" src="images/qr-groom.png" alt="Mã VietQR chuyển khoản cho chú rể" width="540"
             height="640" loading="lazy">
-          <p class="bank-name">Vietcombank (VCB)</p>
+          <p class="bank-name">MB Bank (Ngân hàng Quân Đội)</p>
           <div class="account-number-box">
-            <span class="acc-num">0691000379353</span>
-            <button class="btn-copy" type="button" onclick="copyAcc('0691000379353')">Sao chép</button>
+            <span class="acc-num">0590100484888</span>
+            <button class="btn-copy" type="button" onclick="copyAcc('0590100484888')">Sao chép</button>
           </div>
           <p class="bank-owner">Chủ tài khoản: VŨ MẠNH DƯỠNG</p>
         </div>

@@ -35,7 +35,7 @@
   --font-serif: 'EB Garamond', 'Cormorant Garamond', serif;
   --font-label: 'Cormorant Garamond', serif;
   --font-body: 'Lora', Georgia, serif;
-  --font-caps: 'Uchen', 'Cormorant Garamond', serif;
+  --font-caps: 'Cormorant Garamond', 'EB Garamond', serif;
 }
 
 * {
@@ -915,8 +915,9 @@ html.no-scroll body {
 .parents-tag {
   display: inline-block;
   font-family: var(--font-caps);
-  font-size: 0.68rem;
-  letter-spacing: 2px;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--gold-light);
   margin-bottom: 8px;
@@ -938,6 +939,29 @@ html.no-scroll body {
   font-size: 0.76rem;
   font-style: italic;
   color: var(--text-cream-dim);
+}
+
+.parents-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  border: 1px solid rgba(228, 201, 141, 0.4);
+  background: rgba(201, 162, 74, 0.1);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.parents-map-btn:hover {
+  background: rgba(201, 162, 74, 0.25);
+  border-color: var(--gold-light);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 /* -- Couple names -- */
@@ -968,8 +992,9 @@ html.no-scroll body {
 .couple-role {
   display: block;
   font-family: var(--font-caps);
-  font-size: 0.62rem;
-  letter-spacing: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--gold-light);
   opacity: 0.9;
@@ -1319,16 +1344,104 @@ html.no-scroll body {
   z-index: 1;
 }
 
+/* -- Map Section & Switcher Tabs -- */
+.map-section-wrap {
+  margin-top: 26px;
+  position: relative;
+}
+
+.map-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.map-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-family: var(--font-label);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--text-cream-dim);
+  background: rgba(236, 228, 216, 0.08);
+  border: 1.5px solid rgba(236, 228, 216, 0.25);
+  cursor: pointer;
+  transition: all 0.28s ease;
+  user-select: none;
+}
+
+.map-tab svg {
+  transition: transform 0.28s ease;
+}
+
+.map-tab:hover {
+  background: rgba(236, 228, 216, 0.18);
+  color: var(--text-cream);
+  transform: translateY(-1px);
+}
+
+.map-tab.active {
+  background: var(--text-cream);
+  color: var(--red);
+  border-color: var(--text-cream);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+}
+
+.map-tab.active svg {
+  stroke: var(--red);
+  transform: scale(1.1);
+}
+
+.map-location-info {
+  text-align: center;
+  margin-bottom: 14px;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.25s ease;
+}
+
+.map-location-title {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 3px;
+}
+
+.map-location-address {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-cream);
+  font-style: italic;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
 .map-frame {
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 24px;
-  border: 1px solid rgba(236, 228, 216, 0.25);
-  filter: saturate(0.9);
+  border: 1px solid rgba(236, 228, 216, 0.28);
+  filter: saturate(0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  background: rgba(81, 20, 25, 0.4);
 }
 
 .map-frame iframe {
   display: block;
+  transition: opacity 0.3s ease;
 }
 
 /* ==========================================================================

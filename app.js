@@ -545,13 +545,83 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
-  // 7. ADD TO CALENDAR EVENT
+  // 7. MAP TABS & LOCATION SWITCHER (NHÀ TRAI / NHÀ GÁI)
+  const tabMapGroom = document.getElementById('tab-map-groom');
+  const tabMapBride = document.getElementById('tab-map-bride');
+  const mapIframe = document.getElementById('map-iframe');
+  const mapLocationTitle = document.getElementById('map-location-title');
+  const mapLocationAddress = document.getElementById('map-location-address');
+  const btnViewMap = document.getElementById('btn-view-map');
+  const btnMapText = document.getElementById('btn-map-text');
+
+  const mapData = {
+    groom: {
+      title: 'Tư Gia Nhà Trai',
+      address: 'Xóm 3, Trung Lao, Xã Cổ Lễ, Tỉnh Ninh Bình',
+      embedUrl: 'https://maps.google.com/maps?q=20.3043333,106.2621111&hl=vi&z=16&output=embed',
+      mapsUrl: 'https://maps.app.goo.gl/7sFrr7hu5XZKAVQd8?g_st=ipc',
+      btnText: 'Chỉ Đường Nhà Trai'
+    },
+    bride: {
+      title: 'Tư Gia Nhà Gái',
+      address: 'Số 129 đường Hữu Nghị, Xã Cổ Lễ, Tỉnh Ninh Bình',
+      embedUrl: 'https://maps.google.com/maps?q=20.3168611,106.2696111&hl=vi&z=16&output=embed',
+      mapsUrl: 'https://maps.app.goo.gl/dgN5ZMTHC8GcDK5C8?g_st=ipc',
+      btnText: 'Chỉ Đường Nhà Gái'
+    }
+  };
+
+  let currentMapSide = 'groom';
+
+  const switchMapSide = (side) => {
+    if (!mapData[side]) return;
+    currentMapSide = side;
+    const target = mapData[side];
+
+    if (side === 'groom') {
+      tabMapGroom?.classList.add('active');
+      tabMapGroom?.setAttribute('aria-selected', 'true');
+      tabMapBride?.classList.remove('active');
+      tabMapBride?.setAttribute('aria-selected', 'false');
+    } else {
+      tabMapBride?.classList.add('active');
+      tabMapBride?.setAttribute('aria-selected', 'true');
+      tabMapGroom?.classList.remove('active');
+      tabMapGroom?.setAttribute('aria-selected', 'false');
+    }
+
+    if (mapLocationTitle) mapLocationTitle.textContent = target.title;
+    if (mapLocationAddress) mapLocationAddress.textContent = target.address;
+    if (mapIframe && mapIframe.src !== target.embedUrl) {
+      mapIframe.src = target.embedUrl;
+    }
+    if (btnViewMap) btnViewMap.href = target.mapsUrl;
+    if (btnMapText) btnMapText.textContent = target.btnText;
+  };
+
+  tabMapGroom?.addEventListener('click', () => switchMapSide('groom'));
+  tabMapBride?.addEventListener('click', () => switchMapSide('bride'));
+
+  // Sync map tab when guest side is selected in RSVP form
+  const guestSideInputs = document.querySelectorAll('input[name="guest-side"]');
+  guestSideInputs.forEach(input => {
+    input.addEventListener('change', (e) => {
+      if (e.target.value === 'Khách nhà gái') {
+        switchMapSide('bride');
+      } else {
+        switchMapSide('groom');
+      }
+    });
+  });
+
+  // 7.1 ADD TO CALENDAR EVENT (cập nhật theo địa điểm đang chọn)
   const btnAddCalendar = document.getElementById('btn-add-calendar');
   if (btnAddCalendar) {
     btnAddCalendar.addEventListener('click', () => {
+      const activeLoc = mapData[currentMapSide] || mapData.groom;
       const title = encodeURIComponent('Lễ Cưới Mạnh Dưỡng & Quỳnh Như');
-      const details = encodeURIComponent('Trân trọng kính mời quý khách đến dự tiệc cưới của Mạnh Dưỡng & Quỳnh Như tại Số 129 đường Hữu Nghị, Xã Cổ Lễ, Tỉnh Ninh Bình.');
-      const location = encodeURIComponent('Số 129 đường Hữu Nghị, Xã Cổ Lễ, Tỉnh Ninh Bình');
+      const details = encodeURIComponent(`Trân trọng kính mời quý khách đến dự tiệc cưới của Mạnh Dưỡng & Quỳnh Như tại ${activeLoc.title} (${activeLoc.address}).`);
+      const location = encodeURIComponent(activeLoc.address);
       const dates = '20261018T040000Z/20261018T060000Z'; // UTC 11:00 AM VN time
 
       const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
